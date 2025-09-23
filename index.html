@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yomi</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+</head>
+
+
+<body>
+
+<div id="main-container">
+
+  <textarea 
+    id="mirror"
+    class="block textarea is-large has-fixed-size" 
+    placeholder="ここにテキストを入力。"
+    oninput="onMirrorInput(this.value)"
+  ></textarea>
+
+  <textarea 
+    id="reflection"
+    class="block textarea is-large has-fixed-size is-info" 
+    placeholder="上に入力ください。"
+    readonly
+  ></textarea>
+
+  <button 
+    class="block button is-success is-outlined is-rounded"
+    onclick="onJishoClick()"
+  >jisho.orgで調べる
+  </button>
+
+</div>
+
+<script>
+  function onMirrorInput(value) {
+    reflection = document.getElementById("reflection")
+    reflection.value = value
+  }
+
+  function onJishoClick() {
+    mirror = document.getElementById("mirror")
+    userInput = mirror.value
+
+    newUrl = `https://jisho.org/search/${userInput}`
+    window.location.assign(newUrl)
+  }
+</script>
+
+</body>
+</html>
