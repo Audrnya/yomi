@@ -11,7 +11,7 @@
 
 <body>
 
-<div id="main-container">
+<div id="main-container" class="box">
 
   <textarea 
     id="mirror"
@@ -20,12 +20,10 @@
     oninput="onMirrorInput(this.value)"
   ></textarea>
 
-  <textarea 
+  <div 
     id="reflection"
     class="block textarea is-large has-fixed-size is-info" 
-    placeholder="上に入力ください。"
-    readonly
-  ></textarea>
+  ></div>
 
   <button 
     class="block button is-success is-outlined is-rounded"
@@ -38,7 +36,7 @@
 <script>
   function onMirrorInput(value) {
     reflection = document.getElementById("reflection")
-    reflection.value = value
+    reflection.innerText = value
   }
 
   function onJishoClick() {
