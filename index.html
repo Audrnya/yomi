@@ -27,6 +27,13 @@
   ></div>
 
   <button
+    id="clear-button"
+    class="block button is-danger is-inverted is-rounded"
+    onclick="onClearClick()"
+  >テキストを削除
+  </button>
+
+  <button
     id="jisho-button"
     class="block button is-success is-outlined is-rounded"
     onclick="onJishoClick()"
@@ -43,13 +50,19 @@
 </div>
 
 <script>
+  mirror = document.getElementById("mirror")
+  reflection = document.getElementById("reflection")
+
   function onMirrorInput(value) {
-    reflection = document.getElementById("reflection")
     reflection.innerText = value
   }
 
+  function onClearClick() {
+    mirror.value = ""
+    reflection.innerText = ""
+  }
+
   function onJishoClick() {
-    mirror = document.getElementById("mirror")
     userInput = mirror.value
 
     newUrl = `https://jisho.org/search/${userInput}`
