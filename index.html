@@ -49,9 +49,11 @@
 
 </div>
 
+</body>
+
 <script>
-  mirror = document.getElementById("mirror")
-  reflection = document.getElementById("reflection")
+  var mirror = document.getElementById("mirror")
+  var reflection = document.getElementById("reflection")
 
   function onMirrorInput(value) {
     reflection.innerText = value
@@ -63,12 +65,11 @@
   }
 
   function onJishoClick() {
-    userInput = mirror.value
+    let userInput = encodeURIComponent(mirror.value)
 
-    newUrl = `https://jisho.org/search/${userInput}`
+    let newUrl = `https://jisho.org/search/${userInput}`
     window.location.assign(newUrl)
   }
 </script>
 
-</body>
 </html>
