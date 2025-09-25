@@ -18,7 +18,7 @@
     id="mirror"
     class="block textarea is-large has-fixed-size" 
     placeholder="ここにテキストを入力。"
-    oninput="onMirrorInput(this.value)"
+    oninput="_onMirrorInput(this.value)"
   ></textarea>
 
   <div 
@@ -29,14 +29,14 @@
   <button
     id="clear-button"
     class="block button is-danger is-inverted is-rounded"
-    onclick="onClearClick()"
+    onclick="_onClearClick()"
   >テキストを削除
   </button>
 
   <button
     id="jisho-button"
     class="block button is-success is-outlined is-rounded"
-    onclick="onJishoClick()"
+    onclick="_onJishoClick()"
   >Jishoで調べる
   </button>
 
@@ -55,16 +55,22 @@
   var mirror = document.getElementById("mirror")
   var reflection = document.getElementById("reflection")
 
-  function onMirrorInput(value) {
+
+  document.addEventListener("DOMContentLoaded", () => {
+    _onMirrorInput(mirror.value)
+  })
+  
+
+  function _onMirrorInput(value) {
     reflection.innerText = value
   }
 
-  function onClearClick() {
+  function _onClearClick() {
     mirror.value = ""
     reflection.innerText = ""
   }
 
-  function onJishoClick() {
+  function _onJishoClick() {
     let userInput = encodeURIComponent(mirror.value)
 
     let newUrl = `https://jisho.org/search/${userInput}`
