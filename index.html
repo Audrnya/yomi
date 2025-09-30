@@ -21,10 +21,12 @@
     oninput="_onMirrorInput(this.value)"
   ></textarea>
 
-  <div 
+  <div
     id="reflection"
-    class="block textarea is-large has-fixed-size is-info" 
-  ></div>
+    class="block textarea is-large has-fixed-size is-info"
+    onclick="_onReflectionClick()"
+  >
+  </div>
 
   <button
     id="clear-button"
@@ -51,31 +53,6 @@
 
 </body>
 
-<script>
-  var mirror = document.getElementById("mirror")
-  var reflection = document.getElementById("reflection")
-
-
-  document.addEventListener("DOMContentLoaded", () => {
-    _onMirrorInput(mirror.value)
-  })
-  
-
-  function _onMirrorInput(value) {
-    reflection.innerText = value
-  }
-
-  function _onClearClick() {
-    mirror.value = ""
-    reflection.innerText = ""
-  }
-
-  function _onJishoClick() {
-    let userInput = encodeURIComponent(mirror.value)
-
-    let newUrl = `https://jisho.org/search/${userInput}`
-    window.location.assign(newUrl)
-  }
-</script>
+<script src="./index.js"></script>
 
 </html>
