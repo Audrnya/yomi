@@ -1,13 +1,13 @@
 // Shortcut for this long ass function name
-function $(id) {
-	return document.getElementById(id)
+function $(query) {
+	return document.querySelector(query)
 }
 
 
 // HTML Element References 
-var mirror = $("mirror")
-var reflection = $("reflection")
-var jishoAnchor = $("jisho-anchor")
+var mirror = $("#mirror")
+var reflection = $("#reflection")
+var jishoAnchor = $("#jisho-anchor")
 
 // States
 var mirrorFocus = false
@@ -39,3 +39,17 @@ function _onClearClick() {
 	reflection.innerText = ""
 	jishoAnchor.href = "https://jisho.org/search/"
 }
+
+async function _onPasteClick() {
+	navigator.clipboard
+	.readText()
+	.then((clipText) => {
+		mirror.value = clipText
+		_onMirrorInput(clipText)
+	})
+}
+
+async function _onCopyClick() {
+	navigator.clipboard.writeText(mirror.value)
+}
+

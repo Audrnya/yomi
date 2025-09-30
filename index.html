@@ -28,20 +28,39 @@
   >
   </div>
 
-  <button
-    id="clear-button"
-    class="block button is-danger is-inverted is-rounded"
-    onclick="_onClearClick()"
-  >テキストを削除
-  </button>
-
-  <a id="jisho-anchor" href="#">
+  <div class="columns is-multiline is-mobile">
     <button
-      id="jisho-button"
-      class="block button is-success is-outlined is-rounded"
-    >Jishoで調べる
+      id="clear-button"
+      class="column is-half
+             button is-danger is-inverted is-rounded"
+      onclick="_onClearClick()"
+    >テキストを削除
     </button>
-  </a>
+
+    <a 
+      id="jisho-anchor" 
+      class="column is-half 
+             button is-success is-outlined is-rounded"
+      href="#"
+    >Jishoで調べる
+    </a>
+
+    <button
+      id="paste-button"
+      class="column 
+             button is-warning is-inverted is-rounded"
+      onclick="_onPasteClick()"
+    >貼り付け
+    </button>
+
+    <button
+      id="copy-button"
+      class="column 
+             button is-info is-inverted is-rounded"
+      onclick="_onCopyClick()"
+    >コピー
+    </button>
+  </div>
 
   <figure class="image">
     <img
