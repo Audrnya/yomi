@@ -25,6 +25,10 @@ function _onMirrorInput(value) {
 	jishoAnchor.href = newUrl
 }
 
+function _onMirrorClick() {
+	mirrorFocus = true
+}
+
 function _onReflectionClick() {
 	mirrorFocus = !mirrorFocus
 	if (mirrorFocus) {
