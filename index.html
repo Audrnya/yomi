@@ -6,6 +6,7 @@
   <link rel="icon" href="./assets/images/gasp.jpg" type="image/x-icon">
   <title>よみ</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
   <link rel="stylesheet" href="./index.css">
 </head>
@@ -35,7 +36,13 @@
       class="column is-half
              button is-danger is-inverted is-rounded"
       onclick="_onClearClick()"
-    >テキストを削除
+    >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fa-solid fa-eraser"></i>
+      </span>
+      <span>テキストを削除</span>
+    </span>
     </button>
 
     <a 
@@ -43,7 +50,13 @@
       class="column is-half 
              button is-success is-outlined is-rounded"
       href="#"
-    >Jishoで調べる
+    >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </span>
+      <span>Jishoで調べる</span>
+    </span>
     </a>
 
     <button
@@ -51,7 +64,13 @@
       class="column 
              button is-warning is-inverted is-rounded"
       onclick="_onPasteClick()"
-    >貼り付け
+    >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fa-solid fa-paste"></i>
+      </span>
+      <span>貼り付け</span>
+    </span>
     </button>
 
     <button
@@ -59,7 +78,13 @@
       class="column 
              button is-info is-inverted is-rounded"
       onclick="_onCopyClick()"
-    >コピー
+    >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fa-solid fa-copy"></i>
+      </span>
+      <span>コピー</span>
+    </span>
     </button>
   </div>
 
