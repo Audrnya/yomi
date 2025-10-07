@@ -1,15 +1,7 @@
-@font-face {
-	font-family: "Noto Sans JP";
-	src: url(./assets/fonts/NotoSansJP-VariableFont_wght.ttf)
-}
-
-@font-face {
-	font-family: "Noto Serif JP";
-	src: url(./assets/fonts/NotoSerifJP-VariableFont_wght.ttf)
-}
 
 body {
 	font-family: "Noto Sans JP", sans-serif;
+	font-display: swap;
 }
 
 #mirror {
@@ -17,5 +9,5 @@ body {
 }
 
 #reflection {
-	font-family: "Noto Serif JP", sans-serif;
+	font-family: "Klee One", sans-serif;
 }
