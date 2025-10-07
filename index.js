@@ -9,8 +9,6 @@ var mirror = $("#mirror")
 var reflection = $("#reflection")
 var jishoAnchor = $("#jisho-anchor")
 
-// States
-var mirrorFocus = false
 
 document.addEventListener("DOMContentLoaded", () => {
 	_onMirrorInput(mirror.value)
@@ -25,17 +23,9 @@ function _onMirrorInput(value) {
 	jishoAnchor.href = newUrl
 }
 
-function _onMirrorClick() {
-	mirrorFocus = true
-}
 
 function _onReflectionClick() {
-	mirrorFocus = !mirrorFocus
-	if (mirrorFocus) {
-		mirror.focus()
-	} else {
-		mirror.blur()
-	}
+	mirror.focus()
 }
 
 function _onClearClick() {
