@@ -25,7 +25,12 @@ function _onMirrorInput(value) {
 
 
 function _onReflectionClick() {
+	// This is the text within Reflection because
+	// this event only happens inside it.
+	let selection = window.getSelection()
+	let range = selection.getRangeAt(0) // it's always 1 i guess
 	mirror.focus()
+	mirror.setSelectionRange(range.startOffset, range.endOffset)
 }
 
 function _onClearClick() {
