@@ -13,8 +13,58 @@ var jishoAnchor = $("#jisho-anchor")
 document.addEventListener("DOMContentLoaded", () => {
 	_onMirrorInput(mirror.value)
 	_initWtfTabs()
+	checkSavedTheme()
 })
 
+
+function setTheme(theme) {
+	let themeButton = $("#theme-button")
+	let themeIcon = $("#theme-icon")
+	let literallyHtml = document.documentElement
+
+	if (!theme) {
+		// No value so reverse the theme
+		theme = (literallyHtml.dataset.theme === "dark") ? "light" : "dark"
+	}
+	
+	if (literallyHtml.dataset.theme === theme) {
+		// It's already the same theme
+		return
+	}
+	
+	// Replace the theme for the whole page
+	literallyHtml.dataset.theme = theme
+
+	// Update button looks
+	if (theme == "dark") {
+		themeButton.classList.replace("is-warning", "is-link")
+		themeIcon.classList.replace("fa-sun", "fa-moon")
+	} else {
+		themeButton.classList.replace("is-link", "is-warning")
+		themeIcon.classList.replace("fa-moon", "fa-sun")
+	}
+
+	// Update theme for all other buttons on the page
+	let ignoredIDs = ["theme-button"] 
+	let oppositeTheme = (theme === "dark") ? "is-light" : "is-dark"
+	let buttons = document.getElementsByClassName("button")
+	for (let i = 0; i < buttons.length; i++) {
+		if (ignoredIDs.includes(buttons[i].id)) {
+			continue
+		}
+		buttons[i].classList.replace(oppositeTheme, `is-${theme}`)
+	}
+
+	localStorage.setItem("theme", theme)
+}
+
+function checkSavedTheme() {
+	let theme = localStorage.getItem("theme")
+	if (!theme) {
+		theme = "dark"
+	}
+	setTheme(theme)
+}
 
 function _onMirrorInput(value) {
 	reflection.innerText = value
@@ -53,11 +103,15 @@ async function _onCopyClick() {
 	navigator.clipboard.writeText(mirror.value)
 }
 
+function _onThemeButtonClick() {
+	setTheme()
+}
+
 // Tab functionality for wtf section
 // *need a bit of improvement if i wanna use this more than once
 function _initWtfTabs() {
-	const tabs = document.querySelectorAll('#wtf-tabs li');
-	const tabContent = document.querySelectorAll('.wtf-tab');
+	let tabs = document.querySelectorAll('#wtf-tabs li');
+	let tabContent = document.querySelectorAll('.wtf-tab');
 
 	tabs.forEach(tab => {
 		tab.addEventListener('click', () => {

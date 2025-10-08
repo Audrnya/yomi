@@ -19,8 +19,29 @@
 <body>
 
 <div id="main-container" class="box">
-  <h1 class="title has-text-centered">よみ</h1>
-  <h2 class="subtitle has-text-centered">あうどる</h2>
+
+  <div id="simple-navbar" class="fixed-grid has-2-cols">
+    <div class="grid">
+
+      <div class="cell">
+        <h1 class="title">よみ</h1>
+        <h2 class="subtitle">あうどる</h2>
+      </div>
+
+      <div class="cell">
+        <button 
+          id="theme-button"
+          class="button is-pulled-right is-dark is-link"
+          onclick="_onThemeButtonClick()"
+        >
+          <span class="icon">
+            <i id="theme-icon" class="fa-solid fa-moon"></i>
+          </span>
+        </button>
+      </div>
+
+    </div>
+  </div>
 
   <textarea 
     id="mirror"
@@ -36,7 +57,7 @@
   >
   </div>
 
-  <div class="fixed-grid has-2-cols ">
+  <div class="fixed-grid has-2-cols">
     <div class="grid">
       <button
         id="clear-button"
