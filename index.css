@@ -10,4 +10,5 @@ body {
 
 #reflection {
 	font-family: "Klee One", sans-serif;
+	overflow: auto;
 }
