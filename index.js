@@ -61,7 +61,8 @@ function setTheme(theme) {
 function checkSavedTheme() {
 	let theme = localStorage.getItem("theme")
 	if (!theme) {
-		theme = "dark"
+		let prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+		theme = (prefersDark) ? "dark" : "light"
 	}
 	setTheme(theme)
 }
