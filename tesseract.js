@@ -10,6 +10,19 @@ await worker.setParameters({
 })
 
 
+async function scanAndReflect(image) {
+	// Show the image and hide Mirror
+	mirrorImage.src = URL.createObjectURL(image)
+	showMirrorImage()
+
+	// Scan the image and write result
+	const result = await worker.recognize(image)
+
+	mirror.value = result.data.text
+	_onMirrorInput(result.data.text)
+}
+
+
 // Scan images from fileInput
 $("#fileInput").addEventListener("change", async (e) => {
 	if (e.target.files.length <= 0) {
@@ -20,13 +33,19 @@ $("#fileInput").addEventListener("change", async (e) => {
 	// Get the uploaded image
 	const image = e.target.files[0]
 
-	// Show the image and hide Mirror
-	mirrorImage.src = URL.createObjectURL(image)
-	showMirrorImage()
-
-	// Scan the image and write result
-	const result = await worker.recognize(image);
-
-	mirror.value = result.data.text
-	_onMirrorInput(result.data.text);
+	scanAndReflect(image)
 })
+
+$("#mirror").addEventListener("paste", (event) => {
+    const items = event.clipboardData.items
+
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+        if (item.type.indexOf("image") !== -1) {
+            const file = item.getAsFile() // get the image as a File object
+            scanAndReflect(file)
+
+			return
+        }
+    }
+});
