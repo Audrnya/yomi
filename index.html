@@ -32,6 +32,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
   
+  <!-- OCR Implementation -->
+  <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+  <script src="tesseract.js" type="module"></script>
+
   <link rel="stylesheet" href="./index.css">
 </head>
 
@@ -63,13 +67,43 @@
     </div>
   </div>
 
-  <textarea 
-    id="mirror"
-    class="block textarea is-large has-fixed-size" 
-    placeholder="ここにテキストを入力。"
-    oninput="_onMirrorInput(this.value)"
-  ></textarea>
+  <!-- Mirror -->
+  <div class="field is-grouped">
 
+    <div class="control is-expanded">
+      <div class="control">
+        <div class="box is-hidden">
+            <img id="mirrorImage" src="assets/images/gasp.jpg"/>
+        </div>
+        
+        <textarea
+          id="mirror"
+          class="textarea is-large has-fixed-size"
+          placeholder="ここにテキストを入力。"
+          oninput="_onMirrorInput(this.value)"
+        ></textarea>
+      </div>
+    </div>
+
+  <div class="control">
+    <!-- Hidden file input -->
+    <input id="fileInput" type="file" style="display:none;">
+    <!-- The visible button -->
+    <div 
+      id="fileButton"
+      class="button is-flex is-flex-direction-column is-align-items-center is-justify-content-center" 
+      style="height: 100%!important;"
+      onclick="_onFileButtonClicked()"
+      >
+      <i class="fa-solid fa-image mb-2"></i>
+      <span>画像</span>
+      <span>スキャン</span>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- Reflection -->
   <div
     id="reflection"
     class="block textarea is-large has-fixed-size is-info"
@@ -77,6 +111,7 @@
   >
   </div>
 
+  <!-- Control Buttons -->
   <div class="fixed-grid has-2-cols">
     <div class="grid">
       <button
@@ -130,6 +165,7 @@
 
 </div>
 
+<!-- Some extra content cuz why not? -->
 <div id="wtf-is-this" class="box">
   <div class="tabs is-boxed is-centered">
     <ul id="wtf-tabs">

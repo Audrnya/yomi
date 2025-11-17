@@ -6,6 +6,7 @@ function $(query) {
 
 // HTML Element References 
 var mirror = $("#mirror")
+var mirrorImage = $("#mirrorImage")
 var reflection = $("#reflection")
 var jishoAnchor = $("#jisho-anchor")
 
@@ -67,6 +68,18 @@ function checkSavedTheme() {
 	setTheme(theme)
 }
 
+function showMirrorImage() {
+	// Show the image and hide Mirror
+	mirrorImage.parentElement.classList.remove("is-hidden")
+	mirror.classList.add("is-hidden")
+}
+
+function hideMirrorImage() {
+	// above but reverse
+	mirrorImage.parentElement.classList.add("is-hidden")
+	mirror.classList.remove( "is-hidden")
+}
+
 function _onMirrorInput(value) {
 	reflection.innerText = value
 
@@ -77,6 +90,8 @@ function _onMirrorInput(value) {
 
 
 function _onReflectionClick() {
+	hideMirrorImage()
+	
 	// This is the text within Reflection because
 	// this event only happens inside it.
 	let selection = window.getSelection()
@@ -129,4 +144,8 @@ function _initWtfTabs() {
 
 		});
 	});
+}
+
+function _onFileButtonClicked() {
+	$("#fileInput").click();
 }
