@@ -108,6 +108,7 @@ function _onClearClick() {
 	mirror.value = ""
 	reflection.innerText = ""
 	jishoAnchor.href = "https://jisho.org/search/"
+	hideMirrorImage()
 }
 
 async function _onPasteClick() {
