@@ -24,19 +24,19 @@ async function scanAndReflect(image) {
 
 
 // Scan images from fileInput
-$("#fileInput").addEventListener("change", async (e) => {
-	if (e.target.files.length <= 0) {
+$("#fileInput").addEventListener("change", async (event) => {
+	if (event.target.files.length <= 0) {
 		// no files for some reason?
 		return
 	}
 
 	// Get the uploaded image
-	const image = e.target.files[0]
+	const image = event.target.files[0]
 
 	scanAndReflect(image)
 })
 
-$("#mirror").addEventListener("paste", (event) => {
+function _handlePaste(event) {
     const items = event.clipboardData.items
 
     for (let i = 0; i < items.length; i++) {
@@ -48,4 +48,7 @@ $("#mirror").addEventListener("paste", (event) => {
 			return
         }
     }
-});
+}
+
+$("#mirror").addEventListener("paste", _handlePaste)
+$("#mirrorImage").parentElement.addEventListener("paste", _handlePaste)
