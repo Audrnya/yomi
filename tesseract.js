@@ -6,7 +6,8 @@ const worker = await Tesseract.createWorker(
 	// }
 ); 
 await worker.setParameters({
-	preserve_interword_spaces: '1' /* I think this means don't? */
+	tessedit_pageseg_mode: 1, // Automatic page segmentation with orientation and script detection. (OSD)
+	preserve_interword_spaces: '1' /* I think this means don't */
 })
 
 
@@ -50,5 +51,28 @@ function _handlePaste(event) {
     }
 }
 
-$("#mirror").addEventListener("paste", _handlePaste)
-$("#mirrorImage").parentElement.addEventListener("paste", _handlePaste)
+mirror.addEventListener("paste", _handlePaste)
+mirrorImage.parentElement.addEventListener("paste", _handlePaste)
+
+function _handleDrop(event) {
+	const file = event.dataTransfer.files[0]
+	if (!file) {
+		return
+	}
+
+	// Only allow images
+	if (!file.type.startsWith("image/")) {
+		// alert("Please drop an image file")
+		return
+	}
+	
+	scanAndReflect(file)
+}
+
+["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
+	document.body.addEventListener(eventName, e => e.preventDefault())
+	// mirrorImage.addEventListener(eventName, e => e.preventDefault())
+})
+document.body.addEventListener("drop", _handleDrop)
+// mirrorImage.parentElement.addEventListener("drop", _handleDrop)
+
