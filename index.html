@@ -128,18 +128,18 @@
         onclick="_onClearClick()"
       >
         <i class="fa-solid fa-eraser"></i>
-        &nbsp; テキストを削除
+        &nbsp; リセット
       </button>
 
-      <a 
-        id="jisho-anchor" 
+      <button 
+        id="jisho-button" 
         class="cell
               button is-success is-outlined is-rounded"
-        href="#"
+        onclick="_onJishoButtonClick()"
       >
         <i class="fa-solid fa-magnifying-glass"></i>
         &nbsp; Jishoで調べる
-      </a>
+    </button>
 
       <button
         id="paste-button"
@@ -161,6 +161,22 @@
         &nbsp; コピー
       </button>
     </div>
+  </div>
+
+  <div id="jisho-container" class="box is-hidden">
+    <div class="block p-2 has-background-dark" style="border-radius: 12px">
+      <a id="jisho-anchor" href="">
+        <i class="fa-solid fa-link"></i>
+        jisho.org link here
+      </a>
+    </div>
+
+    <iframe
+      id="jisho-frame"
+      src=""
+      style="width: 100%; height: 80vh; border: none; border-radius: 12px"
+      loading="lazy">
+    </iframe>
   </div>
 
   <figure class="image">

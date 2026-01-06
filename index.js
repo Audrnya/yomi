@@ -10,7 +10,10 @@ var mirrorImage = $("#mirrorImage")
 var mirrorFileButton = $("#mirrorFileButton")
 var mirrorTextButton = $("#mirrorTextButton")
 var reflection = $("#reflection")
+
+var jishoContainer = $("#jisho-container")
 var jishoAnchor = $("#jisho-anchor")
+var jishoFrame = $("#jisho-frame")
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -88,12 +91,7 @@ function hideMirrorImage() {
 
 function _onMirrorInput(value) {
 	reflection.innerText = value
-
-	let userInput = encodeURIComponent(mirror.value)
-	let newUrl = `https://jisho.org/search/${userInput}`
-	jishoAnchor.href = newUrl
 }
-
 
 function _onReflectionClick() {	
 	if (!mirror.classList.contains("is-hidden")) {
@@ -110,10 +108,22 @@ function _onReflectionClick() {
 	}
 }
 
+function _onJishoButtonClick() {
+	let rawUrl = `https://jisho.org/search/${mirror.value}`
+
+	let userInput = encodeURIComponent(mirror.value)
+	let encodedUrl = `https://jisho.org/search/${userInput}`
+
+	jishoAnchor.href = encodedUrl
+	jishoAnchor.innerHTML = `<i class="fa-solid fa-link"></i> ${rawUrl}`
+	jishoFrame.src = encodedUrl
+	jishoContainer.classList.remove("is-hidden")
+}
+
 function _onClearClick() {
 	mirror.value = ""
 	reflection.innerText = ""
-	jishoAnchor.href = "https://jisho.org/search/"
+	jishoContainer.classList.add("is-hidden")
 	hideMirrorImage()
 }
 
