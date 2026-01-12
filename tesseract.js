@@ -42,12 +42,31 @@ function _handlePaste(event) {
 
     for (let i = 0; i < items.length; i++) {
         const item = items[i]
+
+		// Image pasted
         if (item.type.indexOf("image") !== -1) {
             const file = item.getAsFile() // get the image as a File object
             scanAndReflect(file)
 
 			return
         }
+		// Plain text pasted in front of mirror image
+		else if (isMirrorImageVisible() &&
+				 item.type.indexOf("text/plain") !== -1
+		) {
+			item.getAsString((text) => {
+				mirror.value = text
+				_onMirrorInput(text)
+			})
+			hideMirrorImage()
+			
+			return
+		}/* else {
+			console.log(`Ignoring invalid pasted content: ${item.type}`)
+			item.getAsString((s) => {
+				console.log(s)
+			})
+		} */
     }
 }
 
@@ -62,7 +81,7 @@ function _handleDrop(event) {
 
 	// Only allow images
 	if (!file.type.startsWith("image/")) {
-		// alert("Please drop an image file")
+		console.log(`Ignoring invalid dropped content: ${file.type}`)
 		return
 	}
 	

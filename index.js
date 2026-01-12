@@ -87,7 +87,11 @@ function hideMirrorImage() {
 	mirrorImage.parentElement.classList.add("is-hidden")
 	mirrorFileButton.classList.replace("is-hidden", "is-flex")
 	mirrorTextButton.classList.replace("is-flex", "is-hidden")
-	mirror.classList.remove( "is-hidden")
+	mirror.classList.remove("is-hidden")
+}
+
+function isMirrorImageVisible() {
+	return !mirrorImage.parentElement.classList.contains("is-hidden")
 }
 
 function _onMirrorInput(value) {
