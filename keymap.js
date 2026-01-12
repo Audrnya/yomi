@@ -13,10 +13,10 @@ function preventDefault(callable) {
 
 // Keymap object: maps keys to functions
 const keyMap = {
-    "Enter": preventDefault(selectMirror),
+    "Enter": selectMirror,
     "Escape": deselectMirror,
 	"F1": _onClearClick, 
-	"F3": toggleMirrorImage,
+	"F3": preventDefault(toggleMirrorImage),
 	"F4": preventDefault(_onJishoButtonClick),
 };
 

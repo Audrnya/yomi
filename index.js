@@ -102,9 +102,10 @@ function toggleMirrorImage() {
 	}
 }
 
-function selectMirror() {
+function selectMirror(event) {
 	if (document.activeElement !== mirror) {
 		mirror.focus()
+		event.preventDefault()
 	}
 }
 
