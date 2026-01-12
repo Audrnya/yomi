@@ -13,6 +13,7 @@ var reflection = $("#reflection")
 
 var jishoContainer = $("#jisho-container")
 var jishoAnchor = $("#jisho-anchor")
+var jishoLoadingSpin = $("#jisho-loading-spin")
 var jishoFrame = $("#jisho-frame")
 
 
@@ -117,7 +118,18 @@ function _onJishoButtonClick() {
 	jishoAnchor.href = encodedUrl
 	jishoAnchor.innerHTML = `<i class="fa-solid fa-link"></i> ${rawUrl}`
 	jishoFrame.src = encodedUrl
+
+	// Show the iframe container
 	jishoContainer.classList.remove("is-hidden")
+
+	// Wait for the url to load
+	jishoLoadingSpin.classList.remove("is-hidden")
+	jishoFrame.classList.add("is-invisible")
+}
+
+function _onJishoFrameLoad() {
+	jishoLoadingSpin.classList.add("is-hidden")
+	jishoFrame.classList.remove("is-invisible")
 }
 
 function _onJishoCloseClick() {

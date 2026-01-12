@@ -191,11 +191,19 @@
 
     </div>
 
+    <!-- Loading Spin -->
+    <button
+      id="jisho-loading-spin"
+      class="button is-loading is-fullwidth"
+      style="height: 80vh; font-size: 6rem"
+    ></button>
+
     <!-- Bottom Part: The actual thing -->
     <iframe
       id="jisho-frame"
       src=""
       style="width: 100%; height: 80vh; border: none; border-radius: 12px"
+      onload="_onJishoFrameLoad()"
       loading="lazy">
     </iframe>
 

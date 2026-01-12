@@ -4,6 +4,13 @@ body {
 	font-display: swap;
 }
 
+/* Similar to Bulma's is-hidden, but it lets the element load in 
+  Useful for onload events*/
+.is-invisible {
+	height: 0;
+	width: 0;
+}
+
 #mirror {
 	font-family: "Noto Sans JP", sans-serif;
 }
