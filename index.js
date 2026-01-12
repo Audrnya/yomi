@@ -94,6 +94,25 @@ function isMirrorImageVisible() {
 	return !mirrorImage.parentElement.classList.contains("is-hidden")
 }
 
+function toggleMirrorImage() {
+	if (isMirrorImageVisible()) {
+		hideMirrorImage()
+	} else {
+		showMirrorImage()
+	}
+}
+
+function selectMirror() {
+	if (document.activeElement !== mirror) {
+		mirror.focus()
+	}
+}
+
+function deselectMirror() {
+	mirror.blur()
+}
+
+
 function _onMirrorInput(value) {
 	reflection.innerText = value
 }
@@ -146,6 +165,7 @@ function _onClearClick() {
 	mirror.value = ""
 	reflection.innerText = ""
 	jishoContainer.classList.add("is-hidden")
+	mirrorImage.src = "assets/images/gasp.jpg"
 	hideMirrorImage()
 }
 
