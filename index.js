@@ -16,6 +16,14 @@ var jishoAnchor = $("#jisho-anchor")
 var jishoLoadingSpin = $("#jisho-loading-spin")
 var jishoFrame = $("#jisho-frame")
 
+var mirrorWasFocused = false
+const classMap = {
+    "is-light": "is-dark",
+    "is-dark": "is-light",
+	"has-background-dark": "has-background-light",
+	"has-background-light": "has-background-dark"
+};
+
 
 document.addEventListener("DOMContentLoaded", () => {
 	_onMirrorInput(mirror.value)
@@ -53,14 +61,18 @@ function setTheme(theme) {
 
 	// Update theme for all other buttons on the page
 	let ignoredIDs = ["theme-button"] 
-	let oppositeTheme = (theme === "dark") ? "is-light" : "is-dark"
-	let buttons = document.getElementsByClassName("button")
-	for (let i = 0; i < buttons.length; i++) {
-		if (ignoredIDs.includes(buttons[i].id)) {
-			continue
-		}
-		buttons[i].classList.replace(oppositeTheme, `is-${theme}`)
-	}
+	
+	document.querySelectorAll("*").forEach(el => {
+		if (ignoredIDs.includes(el.id)) { return }
+		
+		const classes = [...el.classList];
+
+		classes.forEach(cls => {
+			if (classMap[cls]) {
+				el.classList.replace(cls, classMap[cls]);
+			}
+		});
+	})
 
 	localStorage.setItem("theme", theme)
 }
@@ -105,7 +117,7 @@ function toggleMirrorImage() {
 function selectMirror(event) {
 	if (document.activeElement !== mirror) {
 		mirror.focus()
-		event.preventDefault()
+		if (event) { event.preventDefault() }
 	}
 }
 
@@ -164,12 +176,20 @@ function _onJishoCloseClick() {
 	jishoContainer.classList.add("is-hidden")
 }
 
+function _onClearMousedown() {
+	mirrorWasFocused = document.activeElement === mirror
+}
+
 function _onClearClick() {
 	mirror.value = ""
 	reflection.innerText = ""
 	jishoContainer.classList.add("is-hidden")
 	mirrorImage.src = "assets/images/gasp.jpg"
 	hideMirrorImage()
+
+	if (mirrorWasFocused) {
+		mirror.focus()
+	}
 }
 
 async function _onPasteClick() {
