@@ -129,6 +129,8 @@ function _onJishoButtonClick() {
 	// Wait for the url to load
 	jishoLoadingSpin.classList.remove("is-hidden")
 	jishoFrame.classList.add("is-invisible")
+
+	jishoContainer.scrollIntoView({ behavior: "smooth" })
 }
 
 function _onJishoFrameLoad() {
