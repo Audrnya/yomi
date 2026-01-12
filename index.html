@@ -7,7 +7,7 @@
   <title>よみ</title>
 
   <!-- Metadata shit -->
-  <meta name="description" content="テキストを入力して、Yomitanというブラウザ拡張機能でスキャンできるシンプルなサイト。A simple and lightweight website for the purpose of inputting text and scanning with the browser extension Yomitan.">
+  <meta name="description" content="テキストを入力して、Yomitanでスキャンできるシンプルなサイトです。A simple website to input text and scan with Yomitan.">
   <meta name="keywords" content="japanese, jp, yomitan, yomi, 日本語, よみ, よみたん, あうどる, 入力, スキャン, input, scan, audr, audrnya">
 
   <meta property="og:title" content="よみ (Yomi)">
@@ -17,7 +17,7 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="283">
   <meta property="og:image:height" content="218">
-  <meta property="og:image:alt" content="random image of an anime girl in my gallery">
+  <meta property="og:image:alt" content="random image of an anime girl from my gallery">
   <meta property="og:description" content="テキストを入力して、Yomitanというブラウザ拡張機能でスキャンできるシンプルなサイト。A simple and lightweight website for the purpose of inputting text and scanning with the browser extension Yomitan.">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:locale:alternate" content="en_US">
@@ -237,7 +237,7 @@
           </span>
         </span>
       </h3>
-      <p><strong>よみ</strong>はテキストを入力して、Yomitanというブラウザ拡張機能でスキャンできるシンプルなサイトです。</p>
+      <p><strong>よみ</strong>はテキストを入力して、Yomitanでスキャンできるシンプルなサイトです。</p>
       <p><strong><a href="https://audrnya.github.io/">あうどる</a></strong>がデベロッパーです。</p>
 
       <h3>
@@ -264,13 +264,96 @@
           </span>
         </span>
       </h3>
-
       <article class="message is-warning">
         <div class="message-body">
           <p>あ…残念ながら、このOCRは完璧じゃなくて読み違う可能性もあります。また、日本語の横書きのみ読めます。</p>
           <p>あるいは、<b><a href="https://www.google.com/images" target="_blank">Google Images</a></b>は文字認識の精度が高く、縦書きも読めます。よみのOCRが読み違う場合は、別のタブで同時に開くのがオススメです。</p>
           </div>
-        </article>
+      </article>
+
+      <h3>
+        <span class="icon-text">
+          <span>キーボードショートカット</span>
+          <span class="icon">
+            <i class="fa-solid fa-keyboard ml-3"></i>
+          </span>
+        </span>
+      </h3>
+      <p>下記はよみで機能を実行できるショートカットと、一般的なショートカットです。</p>
+      <table class="table is-striped is-hoverable is-fullwidth">
+      <tbody>
+
+        <tr>
+          <th>キー</th>
+          <th>機能</th>
+        </tr>
+
+        <tr>
+          <td>Enter</td>
+          <td>テキスト入力にフォーカスを当てる</td>
+        </tr>
+
+        <tr>
+          <td>Escape</td>
+          <td>テキスト入力のフォーカスを外す</td>
+        </tr>
+        
+        <tr>
+          <td>F1</td>
+          <td>リセット</td>
+        </tr>
+        
+        <tr>
+          <td>F3</td>
+          <td>画像/テキスト入力を切り替える</td>
+        </tr>
+        
+        <tr>
+          <td>F4</td>
+          <td>Jishoで調べる</td>
+        </tr>
+
+        <tr>
+          <td>&ZeroWidthSpace;</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th colspan="2"">一般的なショートカット</td>
+        </tr>
+        
+        <tr>
+          <td>Ctrl + A</td>
+          <td>すべて選択</td>
+        </tr>
+        
+        <tr>
+          <td>Ctrl + C</td>
+          <td>コピー</td>
+        </tr>
+
+        <tr>
+          <td>Ctrl + V</td>
+          <td>貼り付け</td>
+        </tr>
+
+        <tr>
+          <td>Ctrl + Backspace</td>
+          <td>単語削除（左）</td>
+        </tr>
+        
+        <tr>
+          <td>Ctrl + Delete</td>
+          <td>単語削除（右）</td>
+        </tr>
+
+        <tr>
+          <td>Home</td>
+          <td>TOPへ移動</td>
+        </tr>
+      </tbody>
+      </table>
+
     </div>
 
     <div id="wtf-en" class="content wtf-tab is-hidden">
@@ -282,7 +365,7 @@
           </span>
         </span>
       </h3>
-      <p><strong>Yomi</strong> is a simple and lightweight website for the purpose of inputting text and scanning with the browser extension Yomitan.</p>
+      <p><strong>Yomi</strong> is a simple website to input text and scan with Yomitan.</p>
       <p>Developed by <strong><a href="https://audrnya.github.io/">Audr</a></strong>.</p>
 
       <h3>
@@ -305,7 +388,7 @@
         <span class="icon-text">
           <span>The extracted text from the image I scanned seems wrong</span>
           <span class="icon">
-          <i class="fa-solid fa-question"></i>
+            <i class="fa-solid fa-question"></i>
           </span>
         </span>
       </h3>
@@ -315,6 +398,89 @@
           <p>Alternatively, <b><a href="https://www.google.com/images" target="_blank">Google Images</a></b> is incredibly accurate and can even read vertical right-to-left Japanese. I recommend having it in another tab in case Yomi's scanner makes errors.</p>
         </div>
       </article>
+
+      <h3>
+        <span class="icon-text">
+          <span>Keyboard Shortcuts</span>
+          <span class="icon">
+            <i class="fa-solid fa-keyboard ml-3"></i>
+          </span>
+        </span>
+      </h3>
+      <p>Below is a list of keyboard shortcuts that activate specific actions in this website, along with other normal keyboard shortcuts for reference.</p>
+      <table class="table is-striped is-hoverable is-fullwidth">
+      <tbody>
+
+        <tr>
+          <th>Keys</th>
+          <th>Action</th>
+        </tr>
+
+        <tr>
+          <td>Enter</td>
+          <td>Select Text Input</td>
+        </tr>
+
+        <tr>
+          <td>Escape</td>
+          <td>Deselect Text Input</td>
+        </tr>
+        
+        <tr>
+          <td>F1</td>
+          <td>Reset</td>
+        </tr>
+        
+        <tr>
+          <td>F3</td>
+          <td>Toggle Image / Text Input</td>
+        </tr>
+        
+        <tr>
+          <td>F4</td>
+          <td>Search on Jisho</td>
+        </tr>
+
+        <tr>
+          <td>&ZeroWidthSpace;</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th colspan="2"">General Useful Shortcuts</td>
+        </tr>
+        
+        <tr>
+          <td>Ctrl + A</td>
+          <td>Select All</td>
+        </tr>
+        
+        <tr>
+          <td>Ctrl + C</td>
+          <td>Copy</td>
+        </tr>
+
+        <tr>
+          <td>Ctrl + V</td>
+          <td>Paste</td>
+        </tr>
+
+        <tr>
+          <td>Ctrl + Backspace</td>
+          <td>Delete Entire Word (to the Left)</td>
+        </tr>
+        
+        <tr>
+          <td>Ctrl + Delete</td>
+          <td>Delete Entire Word (to the Right)</td>
+        </tr>
+
+        <tr>
+          <td>Home</td>
+          <td>Go to Top (of the page)</td>
+        </tr>
+      </tbody>
+      </table>
 
     </div>
   </div>
