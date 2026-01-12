@@ -164,19 +164,41 @@
   </div>
 
   <div id="jisho-container" class="box is-hidden">
-    <div class="block p-2 has-background-dark" style="border-radius: 12px">
-      <a id="jisho-anchor" href="">
-        <i class="fa-solid fa-link"></i>
-        jisho.org link here
-      </a>
+
+    <!-- Top Part -->
+    <div class="is-flex is-align-items-center mb-4">
+
+      <!-- LEFT (Address Bar) -->
+      <div class="is-flex-grow-1">
+        <div class="p-2 has-background-dark" style="border-radius:8px">
+          <a id="jisho-anchor" href="" class="is-block">
+            <i class="fa-solid fa-link"></i>
+            jisho.org link here
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT (Close Button) -->
+      <button 
+        id="jisho-close"
+        class="button ml-2"
+        onclick="_onJishoCloseClick()"
+      >
+        <span class="icon">
+          <i id="theme-icon" class="fa-solid fa-x"></i>
+        </span>
+      </button>
+
     </div>
 
+    <!-- Bottom Part: The actual thing -->
     <iframe
       id="jisho-frame"
       src=""
       style="width: 100%; height: 80vh; border: none; border-radius: 12px"
       loading="lazy">
     </iframe>
+
   </div>
 
   <figure class="image">

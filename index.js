@@ -120,6 +120,10 @@ function _onJishoButtonClick() {
 	jishoContainer.classList.remove("is-hidden")
 }
 
+function _onJishoCloseClick() {
+	jishoContainer.classList.add("is-hidden")
+}
+
 function _onClearClick() {
 	mirror.value = ""
 	reflection.innerText = ""
