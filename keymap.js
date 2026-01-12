@@ -13,7 +13,7 @@ function preventDefault(callable) {
 
 // Keymap object: maps keys to functions
 const keyMap = {
-    "Enter": selectMirror,
+    "Enter": preventDefault(selectMirror),
     "Escape": deselectMirror,
 	"F1": _onClearClick, 
 	"F3": toggleMirrorImage,
@@ -25,7 +25,7 @@ document.addEventListener("keydown", (event) => {
     const key = event.key; // gets the key pressed (case-sensitive)
 	// console.log(key)
     if (keyMap[key]) {
-        keyMap[key](); // call the corresponding function
+        keyMap[key](event); // call the corresponding function
         // event.preventDefault(); // optional: prevents default action
     }
 });
