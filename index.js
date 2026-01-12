@@ -124,8 +124,10 @@ function _onReflectionClick() {
 		// this event only happens inside it.
 		let selection = window.getSelection()
 		let range = selection.getRangeAt(0) // there is always only 1 range in this context i guess
+		let offsets = _getCharacterOffsetWithin(range, reflection)
+
 		mirror.focus()
-		mirror.setSelectionRange(range.startOffset, range.endOffset)
+		mirror.setSelectionRange(offsets.start, offsets.end)
 
 	} else {
 		// Focus on mirrorImage's container to listen for paste events 
@@ -208,6 +210,40 @@ function _initWtfTabs() {
 
 		});
 	});
+}
+
+// Utility: get character offset from a Range inside a node
+function _getCharacterOffsetWithin(range, node) {
+    let treeWalker = document.createTreeWalker(
+        node,
+        NodeFilter.SHOW_TEXT,
+        null,
+        false
+    );
+
+	// Count characters from text nodes
+    let charCount = 0;
+    while(treeWalker.nextNode()) {
+        let currentNode = treeWalker.currentNode;
+        if(currentNode === range.startContainer) {
+            var start = charCount + range.startOffset;
+        }
+        if(currentNode === range.endContainer) {
+            var end = charCount + range.endOffset;
+            break;
+        }
+        charCount += currentNode.textContent.length;
+    }
+
+    // Fallback: if start or end weren't set (like on non-text nodes)
+    if(start === undefined || end === undefined) {
+        const fullText = node.textContent;
+        const selectionText = range.toString();
+        start = fullText.indexOf(selectionText);
+        end = start + selectionText.length;
+    }
+
+    return {start, end};
 }
 
 function _onMirrorFileButtonClicked() {
