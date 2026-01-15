@@ -16,6 +16,7 @@ const keyMap = {
     "Enter": selectMirror,
     "Escape": deselectMirror,
 	"F1": _onClearClick, 
+	"F2": openGoogleImages,
 	"F3": preventDefault(toggleMirrorImage),
 	"F4": preventDefault(_onJishoButtonClick),
 };

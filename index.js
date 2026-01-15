@@ -126,6 +126,11 @@ function deselectMirror() {
 }
 
 
+function openGoogleImages() {
+	window.open("https://images.google.com", "_blank");
+}
+
+
 function _onMirrorInput(value) {
 	reflection.innerText = value
 }
