@@ -127,7 +127,7 @@ function deselectMirror() {
 
 
 function openGoogleImages() {
-	window.open("https://images.google.com", "_blank");
+	window.open("https://lens.google.com/uploadbyurl", "_blank");
 }
 
 

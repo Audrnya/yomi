@@ -31,10 +31,6 @@
   <!-- Download Frameworks -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-  
-  <!-- OCR Implementation -->
-  <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
-  <script src="./scripts/tesseract.js" type="module"></script>
 
   <link rel="stylesheet" href="./index.css">
 </head>
@@ -259,21 +255,6 @@
 
       <h3>
         <span class="icon-text">
-          <span>画像でスキャンされた文字が違う</span>
-          <span class="icon">
-          <i class="fa-solid fa-question"></i>
-          </span>
-        </span>
-      </h3>
-      <article class="message is-warning">
-        <div class="message-body">
-          <p>あ…残念ながら、このOCRは完璧じゃなくて読み違う可能性もあります。また、日本語の横書きのみ読めます。</p>
-          <p>あるいは、<b><a href="https://www.google.com/images" target="_blank">Google Images</a></b>は文字認識の精度が高く、縦書きも読めます。よみのOCRが読み違う場合は、別のタブで同時に開くのがオススメです。</p>
-          </div>
-      </article>
-
-      <h3>
-        <span class="icon-text">
           <span>キーボードショートカット</span>
           <span class="icon">
             <i class="fa-solid fa-keyboard ml-3"></i>
@@ -311,7 +292,7 @@
         
         <tr>
           <td>F3</td>
-          <td>画像/テキスト入力を切り替える</td>
+          <td>画像/テキスト入力を切り替える（古い機能）</td>
         </tr>
         
         <tr>
@@ -402,21 +383,6 @@
 
       <h3>
         <span class="icon-text">
-          <span>The extracted text from the image I scanned seems wrong</span>
-          <span class="icon">
-            <i class="fa-solid fa-question"></i>
-          </span>
-        </span>
-      </h3>
-      <article class="message is-warning">
-        <div class="message-body">
-          <p>Yes... Unfortunately, the image scanner is not perfect and is prone to mistakes. It is also configured to read horizontal Japanese text only. Please keep these details in mind.</p>
-          <p>Alternatively, <b><a href="https://www.google.com/images" target="_blank">Google Images</a></b> is incredibly accurate and can even read vertical right-to-left Japanese. I recommend having it in another tab in case Yomi's scanner makes errors.</p>
-        </div>
-      </article>
-
-      <h3>
-        <span class="icon-text">
           <span>Keyboard Shortcuts</span>
           <span class="icon">
             <i class="fa-solid fa-keyboard ml-3"></i>
@@ -454,7 +420,7 @@
         
         <tr>
           <td>F3</td>
-          <td>Toggle Image / Text Input</td>
+          <td>Toggle Image / Text Input (Obsolete Feature)</td>
         </tr>
         
         <tr>
@@ -524,5 +490,6 @@
 <script src="./index.js"></script>
 <script src="./scripts/keymap.js"></script>
 <script src="./scripts/reflection.js"></script>
+<script src="./scripts/lens.js" type="module"></script>
 
 </html>

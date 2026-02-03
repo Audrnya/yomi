@@ -1,28 +1,49 @@
-const worker = await Tesseract.createWorker(
-	"jpn", 
-	2, // TESSERACT_LSTM_COMBINED: 2
-	// {
-	// 	logger: function(m) { console.log(m); }
-	// }
-); 
-await worker.setParameters({
-	tessedit_pageseg_mode: 1, // Automatic page segmentation with orientation and script detection. (OSD)
-	preserve_interword_spaces: '1' /* I think this means don't */
-})
+const FILE_STORAGE_API = "https://litterbox.catbox.moe/resources/internals/api.php"
+const GOOGLE_LENS_URL = "https://lens.google.com/uploadbyurl?url="
 
 
-async function scanAndReflect(image) {
-	// Show the image and hide Mirror
-	mirrorImage.src = URL.createObjectURL(image)
-	showMirrorImage()
-
-	// Scan the image and write result
-	const result = await worker.recognize(image)
-
-	mirror.value = result.data.text
-	_onMirrorInput(result.data.text)
+async function openGoogleLens(image) {
+	let cdn_url = await upload(image)
+	forward(cdn_url)
 }
 
+async function upload(file, time = '1h') {
+	// Validate time parameter
+	const validTimes = ['1h', '12h', '24h', '72h'];
+	if (!validTimes.includes(time)) {
+		throw new Error('Time must be 1h, 12h, 24h, or 72h');
+	}
+
+	// Create FormData object
+	const formData = new FormData();
+	formData.append('reqtype', 'fileupload');
+	formData.append('time', time);
+	formData.append('fileToUpload', file);
+
+	try {
+		const response = await fetch(FILE_STORAGE_API, {
+		method: 'POST',
+		body: formData
+		});
+
+		if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+		}
+
+		// The response is the direct URL to the uploaded file
+		const url = await response.text();
+		return url.trim();
+
+	} catch (error) {
+		console.error('Upload failed:', error);
+		throw error;
+	}
+}
+
+function forward(image_url) {
+	var destination = GOOGLE_LENS_URL + image_url
+	window.open(destination, "_blank");
+}
 
 // Scan images from fileInput
 $("#fileInput").addEventListener("change", async (event) => {
@@ -34,7 +55,7 @@ $("#fileInput").addEventListener("change", async (event) => {
 	// Get the uploaded image
 	const image = event.target.files[0]
 
-	scanAndReflect(image)
+	openGoogleLens(image)
 })
 
 function _handlePaste(event) {
@@ -46,7 +67,7 @@ function _handlePaste(event) {
 		// Image pasted
         if (item.type.indexOf("image") !== -1) {
             const file = item.getAsFile() // get the image as a File object
-            scanAndReflect(file)
+            openGoogleLens(file)
 
 			return
         }
@@ -85,7 +106,7 @@ function _handleDrop(event) {
 		return
 	}
 	
-	scanAndReflect(file)
+	openGoogleLens(file)
 }
 
 ["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
